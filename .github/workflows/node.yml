@@ -1,5 +1,5 @@
 name: NASA Project CI
-om:
+on:
   push:
     branches: [master]
   pull_request:

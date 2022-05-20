@@ -1,10 +1,12 @@
 const request = require("supertest");
 const app = require("../../app");
+const { loadPlanetsData } = require("../../models/planets.model");
 const { mongoConnect, mongoDisconnect } = require("../../services/mongo");
 
 describe("Launches API", () => {
   beforeAll(async () => {
-    await mongoConnect();
+    await mongoConnect(); // ovo mora biti jer u suprotnome test nema sve potrebne podatke o iz baze
+    await loadPlanetsData(); // ovo mora biti jer test koji se zavrti na CI/CD (GitHub Actions) nema sve potrebne podatke za izvršiti test
   });
 
   afterAll(async () => {
